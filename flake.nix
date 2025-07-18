@@ -137,11 +137,11 @@
             ({ python3Packages }:
               python3Packages.buildPythonPackage rec {
                 pname = "clangd_tidy";
-                version = "1.1.0.post1";
+                version = "1.1.0.post2";
                 format = "pyproject";
                 src = final.fetchPypi {
                   inherit pname version;
-                  hash = "sha256-wqwrdD+8kd2N0Ra82qHkA0T2LjlDdj4LbUuMkTfpBww=";
+                  hash = "sha256-NyghLY+BeY9LAOstKEFcPLdA7l1jCdHLuyPms4bOyYE=";
                 };
                 buildInputs = with python3Packages; [ setuptools-scm ];
                 propagatedBuildInputs = with python3Packages; [

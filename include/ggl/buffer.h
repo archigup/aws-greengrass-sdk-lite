@@ -8,6 +8,7 @@
 //! Buffer utilities.
 
 #include <ggl/attr.h>
+#include <ggl/cbmc.h>
 #include <ggl/error.h>
 #include <stdbool.h>
 #include <stddef.h>
@@ -94,6 +95,11 @@ GglBuffer ggl_buffer_substr(GglBuffer buf, size_t start, size_t end) CONST;
 
 /// Parse an integer from a string
 GglError ggl_str_to_int64(GglBuffer str, int64_t value[static 1])
-    ACCESS(write_only, 2);
+    ACCESS(write_only, 2) CBMC_CONTRACT(
+        requires(cbmc_arr_unique(str.data, str.len)),
+        requires(cbmc_ptr_unique(value)),
+        ensures(cbmc_enum_valid(cbmc_return)),
+        assigns(*value)
+    );
 
 #endif

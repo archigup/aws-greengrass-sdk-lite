@@ -25,7 +25,14 @@ GglError ggipc_call(
 );
 
 typedef GglError GgIpcSubscribeCallback(
-    void *ctx, GglBuffer service_model_type, GglMap data
+    void *ctx,
+    GgIpcSubscriptionHandle handle,
+    GglBuffer service_model_type,
+    GglMap data
+);
+
+typedef GglError GgIpcSubCloseCallback(
+    void *ctx, GgIpcSubscriptionHandle handle
 );
 
 GglError ggipc_subscribe(
@@ -35,9 +42,10 @@ GglError ggipc_subscribe(
     GgIpcResultCallback *result_callback,
     GgIpcErrorCallback *error_callback,
     void *response_ctx,
-    GgIpcSubscribeCallback *sub_callback,
-    void *sub_callback_ctx,
-    GglIpcSubscriptionHandle *out_sub_handle
+    GgIpcSubscribeCallback *sub_resp_callback,
+    GgIpcSubCloseCallback *sub_close_callback,
+    void *sub_ctx,
+    GgIpcSubscriptionHandle *sub_handle
 );
 
 #endif

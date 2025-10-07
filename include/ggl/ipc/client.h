@@ -36,12 +36,13 @@ GglError ggipc_connect_with_token(GglBuffer socket_path, GglBuffer auth_token);
 
 // IPC calls
 
+/// Handle for referring to a subscripion created by an IPC call
 typedef struct {
     uint32_t val;
-} DESIGNATED_INIT GglIpcSubscriptionHandle;
+} GgIpcSubscriptionHandle;
 
 /// Close a subscription returned by an IPC call
-void ggipc_close_subscription(GglIpcSubscriptionHandle handle);
+void ggipc_close_subscription(GgIpcSubscriptionHandle handle);
 
 /// Publish a message to a local topic in JSON format
 GglError ggipc_publish_to_topic_json(GglBuffer topic, GglMap payload);

@@ -41,8 +41,16 @@
             git
             cmake
             cbmc
+            rust-analyzer
+            cargo
+            clippy
+            rustc
+            rustfmt
           ];
-          env.NIX_HARDENING_ENABLE = "";
+          env = { rustPlatform, ... }: {
+            NIX_HARDENING_ENABLE = "";
+            RUST_SRC_PATH = "${rustPlatform.rustLibSrc}";
+          };
           shellHook = ''
             export MAKEFLAGS=-j
           '';
@@ -53,7 +61,14 @@
           stdenv = lib.mkForce (llvmStdenv pkgs);
         };
 
-        formatters = { llvmPackages_21, cmake-format, nodePackages, yapf, ... }:
+        formatters =
+          { llvmPackages_21
+          , cmake-format
+          , rustfmt
+          , nodePackages
+          , yapf
+          , ...
+          }:
           let
             fmt-c = "${llvmPackages_21.clang-unwrapped}/bin/clang-format -i";
             fmt-cmake = "${cmake-format}/bin/cmake-format -i";
@@ -67,6 +82,7 @@
             "*.hpp" = fmt-c;
             "CMakeLists.txt" = fmt-cmake;
             ".clang*" = fmt-yaml;
+            "*.rs" = "${rustfmt}/bin/rustfmt";
             "*.py" = "${yapf}/bin/yapf -i";
           };
 

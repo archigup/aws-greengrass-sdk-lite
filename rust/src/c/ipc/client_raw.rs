@@ -2,7 +2,8 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 
-use crate::{GgIpcSubscriptionHandle, GglBuffer, GglError, GglMap};
+use super::GgIpcSubscriptionHandle;
+use crate::c::{GglBuffer, GglError, GglMap};
 use core::ffi::c_void;
 
 pub type GgIpcResultCallback =

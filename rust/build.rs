@@ -9,8 +9,7 @@ use std::process::Command;
 fn main() {
     let out_dir = env::var("OUT_DIR").unwrap();
     let manifest_dir = env::var("CARGO_MANIFEST_DIR").unwrap();
-    let project_root =
-        PathBuf::from(&manifest_dir).parent().unwrap().parent().unwrap().to_path_buf();
+    let project_root = PathBuf::from(&manifest_dir).parent().unwrap().to_path_buf();
 
     let cmake_build_dir = PathBuf::from(&out_dir).join("cmake");
 

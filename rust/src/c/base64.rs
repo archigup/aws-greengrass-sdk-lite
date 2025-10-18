@@ -2,7 +2,7 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 
-use crate::{GglArena, GglBuffer, GglError};
+use super::{GglArena, GglBuffer, GglError};
 
 unsafe extern "C" {
     /// Convert a base64 buffer to its decoded data.

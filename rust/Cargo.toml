@@ -1,15 +1,9 @@
-[workspace]
-members = ["ggl-sdk-sys", "ggl-sdk"]
-resolver = "3"
-
-[workspace.package]
+[package]
+name = "ggl-sdk"
 version = "0.0.2"
 edition = "2024"
 license = "Apache-2.0"
 repository = "https://github.com/aws/aws-greengrass-sdk-lite"
-
-[workspace.metadata.rust-analyzer]
-cargo.buildScripts.enable = true
 
 [profile.release]
 strip = true

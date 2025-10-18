@@ -2,7 +2,7 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 
-use crate::{GglBuffer, GglError, GglObject};
+use super::{GglBuffer, GglError, GglObject};
 use core::ffi::c_void;
 
 /// Arena allocator backed by fixed buffer

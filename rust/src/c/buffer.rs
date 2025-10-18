@@ -2,7 +2,7 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 
-use crate::GglError;
+use super::GglError;
 use core::ffi::c_char;
 
 /// A fixed buffer of bytes. Possibly a string.
